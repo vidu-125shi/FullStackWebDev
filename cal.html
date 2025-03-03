@@ -1,0 +1,99 @@
+<!-- EXPERIMENT - -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: rgb(15, 15, 15);
+        }
+        .calculator {
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 20px;
+            background-color: black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: repeat(4, 60px);
+            gap: 10px;
+            justify-items: center;
+        }
+        .calculator input {
+            grid-column: span 4;
+            height: 40px;
+            text-align: right;
+            margin-bottom: 10px;
+            font-size: 18px;
+            border: 1px solid rgb(24, 22, 22);
+            background-color: rgb(24,22,22);
+            border-radius: 5px;
+            padding-right: 10px;
+        }
+        .calculator button {
+            height: 50px;
+            width: 60px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid rgb(24, 22, 22);
+            border-radius: 5px;
+            background-color: rgb(24, 22, 22);
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .calculator button:hover {
+            background-color: rgb(24,18,18);
+        }
+    </style>
+</head>
+<body>
+<h1 style="color:white">Calculator</h1>
+<div class="calculator">
+    <input type="text" id="display" disabled style="width: 250px">
+    <button onclick="clearDisplay()" style="background-color: rgb(24,22,22);color:green">C</button>
+    <button onclick="appendCharacter('7')">7</button>
+    <button onclick="appendCharacter('8')">8</button>
+    <button onclick="appendCharacter('9')">9</button>
+    <button onclick="appendCharacter('/')">/</button>
+    <button onclick="appendCharacter('4')">4</button>
+    <button onclick="appendCharacter('5')">5</button>
+    <button onclick="appendCharacter('6')">6</button>
+    <button onclick="appendCharacter('*')">*</button>
+    <button onclick="appendCharacter('1')">1</button>
+    <button onclick="appendCharacter('2')">2</button>
+    <button onclick="appendCharacter('3')">3</button>
+    <button onclick="appendCharacter('-')">-</button>
+    <button onclick="appendCharacter('0')">0</button>
+    <button onclick="appendCharacter('.')">.</button>
+    <button onclick="appendCharacter('+')">+</button>
+
+    <button onclick="calculateResult()" style="grid-column: span 4;">=</button>
+</div>
+
+<script>
+    function appendCharacter(char) {
+        document.getElementById('display').value += char;
+    }
+
+    function calculateResult() {
+        try {
+            document.getElementById('display').value = eval(document.getElementById('display').value);
+        } catch {
+            document.getElementById('display').value = 'Error';
+        }
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+</script>
+
+</body>
+</html>
